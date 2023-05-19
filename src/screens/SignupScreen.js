@@ -26,12 +26,12 @@ const SignupScreen = ({ navigation }) => {
   return (
     <View>
       <TextInput
-        placeholder="Username"
+        placeholder="Nome"
         value={username}
         onChangeText={setUsername}
       />
       <TextInput
-        placeholder="Password"
+        placeholder="Senha"
         secureTextEntry
         value={password}
         onChangeText={setPassword}

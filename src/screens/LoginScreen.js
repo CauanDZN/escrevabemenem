@@ -27,12 +27,12 @@ const LoginScreen = ({ navigation }) => {
     <View>
       {/* Campos de entrada do login */}
       <TextInput
-        placeholder="Username"
+        placeholder="Nome"
         value={username}
         onChangeText={setUsername}
       />
       <TextInput
-        placeholder="Password"
+        placeholder="Senha"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
