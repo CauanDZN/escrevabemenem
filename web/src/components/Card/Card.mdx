@@ -1,0 +1,80 @@
+import { Canvas, Meta, Controls, Story } from '@storybook/blocks';
+import * as CardStories from './Card.stories.tsx';
+
+<Meta of={CardStories} />
+
+# Card Component
+
+<Canvas of={CardStories.Default} />
+
+The `Card` component is a reusable component that represents a card with a title, description, and an icon. It is commonly used in UI designs to display information in a visually appealing manner.
+
+## Usage
+
+To use the `Card` component, follow these steps:
+
+1. Import the necessary dependencies and the `Card` component into your project.
+2. Render the `Card` component and pass the required props.
+
+Example usage:
+
+```jsx
+import Card from './Card';
+
+function App() {
+  return (
+    <Card index={0} title="Title" description="Description" Icon={/* Your icon component */} />
+  );
+}
+```
+
+## Props
+
+The `Card` component accepts the following props:
+
+- `index` (number, required): The index or identifier of the card.
+- `title` (string, required): The title of the card.
+- `description` (string, required): The description or content of the card.
+- `Icon` (Icon component, required): An icon component to be displayed on the card. It can be any valid React component that renders an icon.
+
+## Styling
+
+The `Card` component applies the following default styles:
+
+- A background color of `zinc-100`.
+- Padding of `6` on all sides.
+- A rounded border with a radius of `lg`.
+- A minimum width of `20rem`.
+- Text color classes: `text-dark-green-700` for the icon, `text-black` for the title, and `text-zinc-600` for the description.
+
+You can customize the styles by modifying the CSS classes or using CSS-in-JS techniques.
+
+## Dependencies
+
+Make sure to install the following dependencies for the `Card` component to work correctly:
+
+- `@phosphor-icons/react`: This package provides the icons used in the component.
+- `next/font-google`: This package provides the Sora font, which is used for the title text.
+
+## Example
+
+Here's an example of using the `Card` component with a `SealCheck` icon:
+
+```jsx
+import Card from './Card';
+import { SealCheck } from '@phosphor-icons/react';
+
+function App() {
+  return (
+    <Card index={0} title="Title" description="Description" Icon={SealCheck} />
+  );
+}
+```
+
+In this example, the component is rendered with an index of `0`, a title of `"Title"`, a description of `"Description"`, and the `SealCheck` icon.
+
+---
+
+That's all about the `Card` component. You can now use it in your React project to create stylish and informative cards with ease.
+
+Please note that the code snippets within the Markdown document assume that you have the necessary dependencies installed and configured correctly in your project.

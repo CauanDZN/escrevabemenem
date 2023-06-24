@@ -1,0 +1,79 @@
+import { Canvas, Meta, Controls } from '@storybook/blocks';
+import * as SlideCarouselStories from './SlideCarousel.stories.tsx';
+
+<Meta of={SlideCarouselStories} />
+
+# SlideCarousel
+
+<Canvas of={SlideCarouselStories.Default} />
+
+The `SlideCarousel` component is a React carousel component that allows you to slide through a list of child elements. It provides features such as automatic sliding, dragging to navigate, and touch support for mobile devices.
+
+## Usage
+
+To use the `SlideCarousel` component, follow these steps:
+
+1. Import the necessary dependencies and the `SlideCarousel` component into your project.
+2. Render the `SlideCarousel` component and pass the required props.
+
+Example usage:
+
+```jsx
+import SlideCarousel from './SlideCarousel';
+
+function App() {
+  return (
+    <SlideCarousel />
+  );
+}
+```
+
+## Props
+
+The `SlideCarousel` component accepts the following props:
+
+- `className` (string, required): A CSS class name to apply to the component's container div.
+- `children` (ReactElement[], required): An array of React elements representing the slides in the carousel.
+
+## Functionality
+
+The `SlideCarousel` component provides the following functionality:
+
+- Automatic Sliding: The component automatically transitions to the next slide after a specified interval (default: 5 seconds). The interval can be customized by modifying the `useEffect` hook in the component code.
+- Manual Navigation: You can navigate between slides by clicking the previous and next buttons or by clicking the indicator dots below the slides.
+- Dragging Support: You can drag the carousel horizontally to navigate between slides. Click and hold on the carousel, then move the cursor left or right to slide.
+- Touch Support: The component also supports touch gestures for navigation on mobile devices. Swipe left or right on the carousel to slide between elements.
+
+## Dependencies
+
+Make sure to install the following dependencies for the `SlideCarousel` component to work correctly:
+
+- `@phosphor-icons/react`: This package provides the caret icons used for the previous and next buttons in the carousel.
+- `react`: The React library.
+- `react-dom`: The React DOM library.
+
+## Example
+
+Here's an example of using the `SlideCarousel` component with three slides:
+
+```jsx
+import SlideCarousel from './SlideCarousel';
+
+function App() {
+  return (
+    <SlideCarousel className="your-custom-tailwind">
+      <div className="h-[100%] min-w-[100%] bg-zinc-300 border border-zinc-400 flex flex-row justify-center items-center">Slide 1</div>
+      <div className="h-[100%] min-w-[100%] bg-zinc-300 border border-zinc-400 flex flex-row justify-center items-center">Slide 2</div>
+      <div className="h-[100%] min-w-[100%] bg-zinc-300 border border-zinc-400 flex flex-row justify-center items-center">Slide 3</div>
+    </SlideCarousel>
+  );
+}
+```
+
+In this example, the component is rendered with a custom CSS class name and three slide elements.
+
+---
+
+That's all about the `SlideCarousel` component. You can now use it in your React project to create interactive carousels with sliding functionality and various navigation options.
+
+Please note that the code snippets within the Markdown document assume that you have the necessary dependencies installed and configured correctly in your project.

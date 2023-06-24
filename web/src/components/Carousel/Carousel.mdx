@@ -1,0 +1,111 @@
+import { Canvas, Meta, Controls, Story } from '@storybook/blocks';
+import * as CarouselStories from './Carousel.stories.tsx';
+
+<Meta of={CarouselStories} />
+
+# Carousel
+
+The `Carousel` component is used to display a set of child elements that can be slid to the next items.
+
+<Canvas of={CarouselStories.Default} />
+
+<Controls />
+
+## Usage
+
+```jsx
+import Carousel from './Carousel';
+
+<Carousel className="my-carousel">
+  {/* Add your child elements here */}
+</Carousel>
+```
+
+## Props
+
+- `className` `(string, default: "")`: Additional CSS classes for the component.
+- `children` `(ReactElement[])`: An array of child elements to be displayed in the carousel.
+
+## Example
+
+```jsx
+import Carousel from './Carousel';
+import Card from '../Card';
+import { SealCheck } from '@phosphor-icons/react';
+
+<Carousel className="my-carousel">
+  <Card index={0} title="Title" description="Description" Icon={SealCheck} />
+  <Card index={1} title="Title" description="Description" Icon={SealCheck} />
+  <Card index={2} title="Title" description="Description" Icon={SealCheck} />
+  <Card index={3} title="Title" description="Description" Icon={SealCheck} />
+</Carousel>
+```
+
+The `Carousel` component accepts an array of components as its children. Each component inside of it represents an item in the carousel.
+
+## Styling
+
+The `Carousel` component uses Tailwind CSS for styling. You can pass additional classes using the `className` prop to style the carousel as desired.
+
+For example:
+
+```jsx
+<Carousel className="w-full bg-zinc-200">
+  {/* Add your child elements here */}
+</Carousel>
+```
+
+## Functions
+
+In addition to the props listed above, the `Carousel` component also exposes the following functions:
+
+- `handleSlide()`: Slides to a specific item in the carousel.
+
+```js
+function handleSlide(newSlide: number) {
+  if (newSlide < 0 || newSlide > length) return;
+  scrollToSlide(newSlide);
+}
+```
+
+- `scrollToSlide()`: Scrolls smoothly into the desired item.
+
+```js
+function scrollToSlide(newSlide: number) {
+  if (containerRef.current) {
+    setSlide(newSlide);
+    const targetElement = containerRef.current.childNodes[newSlide] as HTMLElement;
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }
+}
+```
+
+- `handleMove()`: Detect scroll gestures inside cards container.
+
+```js
+function handleMove(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
+  if (!isDragging) return;
+  event.preventDefault();
+  const touch = 'touches' in event ? event.touches[0] : event;
+  if (!containerRef.current) return;
+  const x = touch.clientX - containerRef.current.offsetLeft;
+  const walk = (x - startX) * 1;
+  containerRef.current.scrollLeft = scrollLeft - walk;
+  walk > 0 ? handleSlide(slide - 1) : handleSlide(slide + 1);
+  setIsDragging(false);
+}
+```
+
+
+This applies a gray background to the carousel by adding the `bg-zinc-200` class and `w-full` applies full width.
+
+You can refer to the [Tailwind CSS documentation](https://tailwindcss.com/docs) for more information on customizing the styling of the `Carousel` component.
+
+Please note that the above documentation assumes the presence of the `Card` component and the `SealCheck` icon from the `@phosphor-icons/react` package. Make sure to import and use them accordingly in your project.
+
+This MDX file provides an overview of the `Carousel` component, its usage, props, example usage with `Card` components, and instructions for styling using Tailwind CSS. The `Canvas` component from Storybook is used to showcase the component in action.
+
+Feel free to modify and enhance the documentation as needed for your project.

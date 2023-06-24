@@ -1,0 +1,158 @@
+import { Canvas, Meta, Controls, Story } from '@storybook/blocks';
+import * as HeaderStories from './Header.stories.tsx';
+
+<Meta of={HeaderStories} />
+
+- 
+
+# Header
+
+The `Header` component is used to display a header section at the top of the page.
+
+<Canvas of={HeaderStories.Default} />
+
+<Controls />
+
+## Usage
+
+```jsx
+import Header from './Header';
+
+<Header />
+```
+
+## Props
+
+The `Header` component does not accept any props.
+
+## Example
+
+```jsx
+import Header from './Header';
+
+<Header />
+```
+
+The `Header` component can be used as-is without any props.
+
+## Styling
+
+The `Header` component uses Tailwind CSS for styling. It applies different styles based on the scroll position of the page.
+
+- When the page is scrolled to the top, the header has a white background with larger padding and a larger logo.
+- When the page is scrolled down, the header has a smaller padding and a smaller logo.
+
+You can customize the styling of the `Header` component by modifying the Tailwind CSS classes applied to the header elements. The component uses responsive classes to adjust the layout based on screen size.
+
+## Structure
+```jsx
+<header ref={refs.header} className="fixed top-0 left-0 w-full flex flex-col z-20 lg:flex-row justify-center bg-white px-10 axl:px-0">
+  <div className={'flex flex-row max-w-axl w-full justify-between lg:items-center text-white will-change-scroll transition-[padding] duration-300 ' + (scroll0 ? 'py-5' : 'py-3')}>
+    <!-- Content inside the header -->
+
+    <!-- Logo Section -->
+    <div className="flex flex-row gap-2 py-4 justify-between items-center">
+      <Image src={logo} alt="logo" className="transition-[height,width]" width={scroll0 ? 74 : 64} height={scroll0 ? 40 : 30} />
+    </div>
+
+    <!-- Navigation Section -->
+    <Nav scroll0={scroll0} className="hidden lg:flex" />
+
+    <!-- Action Buttons Section -->
+    <div className="flex flex-row gap-2 items-center">
+      <button className={'${inter_sb.className} flex flex-row items-center justify-center gap-2 text-sm transition-[padding] duration-300 ' + (scroll0 ? 'py-3' : 'py-2') + ' px-4 bg-dark-green-600 rounded-lg hover:bg-dark-green-500 transition duration-300 active:bg-dark-green-700 lg:w-auto'}>
+        Criar uma conta
+      </button>
+
+      <button className={'${inter_sb.className} flex flex-row items-center justify-center gap-2 text-sm text-dark-green-600 transition-[padding] duration-300 ' + (scroll0 ? 'py-3' : 'py-2') + ' px-4 border border-dark-green-600 rounded-lg lg:w-auto'}>
+        Acessar
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Section -->
+  <Nav scroll0={scroll0} className="flex lg:hidden" />
+</header>
+```
+
+Explanation:
+
+- The `header` element has the following properties:
+  - `ref={refs.header}`: A reference to the `header` element using a `useRef` hook.
+  - `className="fixed top-0 left-0 w-full flex flex-col z-20 lg:flex-row justify-center bg-white px-10 axl:px-0"`: Tailwind CSS classes for fixed positioning, full width, flex column layout (on small screens) and flex row layout (on large screens), centered justification, white background, and custom padding classes (`px-10 axl:px-0`).
+- Inside the `header`, there's a `div` container with the following properties:
+  - `className="flex flex-row max-w-axl w-full justify-between lg:items-center text-white will-change-scroll transition-[padding] duration-300 " + (scroll0 ? 'py-5' : 'py-3')`: Tailwind CSS classes for flex row layout, maximum width (`max-w-axl`), full width, justified space between items, vertically centered items on large screens, white text color, CSS transition for padding changes, and dynamic padding classes based on the `scroll0` state (`py-5` for true, `py-3` for false).
+- Inside the `div` container, the header content is structured as follows:
+  - Logo Section:
+    - A `div` element with the following properties:
+      - `className="flex flex-row gap-2 py-4 justify-between items-center"`: Tailwind CSS classes for flex row layout, gap between items, vertically centered items, and padding at the top and bottom.
+   
+
+ - Inside the `div`, there's an `Image` component with the following properties:
+      - `src={logo}`: The source of the logo image.
+      - `alt="logo"`: The alt text for the logo image.
+      - `className="transition-[height,width]"`: A CSS transition for height and width changes.
+      - `width={scroll0 ? 74 : 64}`: The width of the image based on the `scroll0` state (`74` for true, `64` for false).
+      - `height={scroll0 ? 40 : 30}`: The height of the image based on the `scroll0` state (`40` for true, `30` for false).
+  - Navigation Section:
+    - A `Nav` component with the following properties:
+      - `scroll0={scroll0}`: The `scroll0` state value passed as a prop.
+      - `className="hidden lg:flex"`: Tailwind CSS classes for hiding the navigation on small screens and showing it on large screens.
+  - Action Buttons Section:
+    - A `div` element with the following properties:
+      - `className="flex flex-row gap-2 items-center"`: Tailwind CSS classes for flex row layout, gap between items, and vertically centered items.
+    - Inside the `div`, there are two `button` elements:
+      - The first `button` has the following properties:
+        - `className={'${inter_sb.className} flex flex-row items-center justify-center gap-2 text-sm transition-[padding] duration-300 ' + (scroll0 ? 'py-3' : 'py-2') + ' px-4 bg-dark-green-600 rounded-lg hover:bg-dark-green-500 transition duration-300 active:bg-dark-green-700 lg:w-auto'}`: Tailwind CSS classes for font styling (using the `inter_sb` font), flex row layout, vertically centered items, justified center alignment, gap between items, text size, transition for padding changes, dynamic padding classes based on the `scroll0` state (`py-3` for true, `py-2` for false), background color, rounded corners, hover effect, active state background color, and automatic width on large screens.
+        - The button text is "Criar uma conta".
+      - The second `button` has the following properties:
+        - `className={'${inter_sb.className} flex flex-row items-center justify-center gap-2 text-sm text-dark-green-600 transition-[padding] duration-300 ' + (scroll0 ? 'py-3' : 'py-2') + ' px-4 border border-dark-green-600 rounded-lg lg:w-auto'}`: Tailwind CSS classes for font styling (using the `inter_sb` font), flex row layout, vertically centered items, justified center alignment, gap between items, text size, transition for padding changes, dynamic padding classes based on the `scroll0` state (`py-3` for true, `py-2` for false), border, border color, rounded corners, and automatic width on large screens.
+        - The button text is "Acessar".
+  - Mobile Navigation Section:
+    - A `Nav` component with the following properties:
+      - `scroll0={scroll0}`: The `scroll0` state value passed as a prop.
+      - `className="flex lg:hidden"`: Tailwind CSS classes for showing the navigation on small screens and hiding it on large screens.
+
+This organized explanation breaks down the structure of the `Header` component and provides details about each section and its associated Tailwind CSS classes.
+
+## Functions
+
+```js
+// src/components/Header.tsx - Lines 15-25
+
+const [scroll0, setScroll0] = useState(true);
+
+const refs = {
+  header: useRef() as RefObject<HTMLDivElement>,
+};
+
+useEffect(() => {
+  window.addEventListener('scroll', () => {
+    window.scrollY === 0 ? setScroll0(true) : setScroll0(false)
+  })
+}, [refs.header])
+```
+
+The `Header` component has the following functions:
+
+- `useEffect`: This is a React hook that allows you to perform side effects in functional components. In this code, `useEffect` is used to add an event listener to the `scroll` event of the window. When the user scrolls, the callback function checks the `window.scrollY` value. If it's equal to `0`, meaning the user is at the top of the page, `setScroll0(true)` is called to update the `scroll0` state to `true`. Otherwise, `setScroll0(false)` is called to update the `scroll0` state to `false`. The dependency array `[refs.header]` ensures that the effect is only re-run if the `refs.header` value changes.
+
+- `useState`: This is another React hook used for managing state in functional components. In this code, `useState(true)` is called to initialize the `scroll0` state with a default value of `true`. The `scroll0` state variable holds the value that determines the padding and height/width changes in the header based on the scroll position.
+
+- `useRef`: This is a React hook used to create a reference object that can be attached to HTML elements. In this code, `useRef()` is called to create a `header` reference object. This reference is later used in the `header` element as `ref={refs.header}`. The `refs.header` reference will allow accessing the HTML `header` element and tracking its scroll position.
+
+- `Inter`: This is a function used to import a font from Google Fonts. It takes an options object as an argument and returns a font face rule. In this code, `inter_sb` is assigned the result of calling the `Inter` function with the following options:
+  - `subsets: ['latin']`: Specifies that only the Latin subset of the font should be loaded.
+  - `weight: '600'`: Specifies the font weight as 600 (semi-bold).
+
+The additional functions enhance the functionality of the `Header` component. `useEffect` allows tracking the scroll position and updating the `scroll0` state accordingly. `useState` manages the `scroll0` state value. `useRef` creates a reference to the `header` element. And `Inter` imports a custom font for the action buttons.
+
+Please note that the above documentation assumes the presence of the `Nav` component, the `List` icon from the `@phosphor-icons/react` package, and the `Inter` font from the Google Fonts API. Make sure to import and use them accordingly in your project.
+
+This MDX file provides an overview of the `Header` component, its usage, props, example usage, and instructions for styling using Tailwind CSS. The `Canvas` component from Storybook is used to showcase the component in action.
+
+Feel free to modify and enhance the documentation as needed for your project.
+
+## Related Components
+
+- [Nav](/docs/components-nav--docs)

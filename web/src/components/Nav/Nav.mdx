@@ -1,0 +1,86 @@
+import { Canvas, Meta, Controls } from '@storybook/blocks';
+import * as NavStories from './Nav.stories.tsx';
+
+<Meta of={NavStories} />
+
+# Nav
+
+<Canvas of={NavStories.Default} />
+
+<Controls />
+
+The `Nav` component is used to display a navigation bar with menu options. It allows users to navigate through different sections of the website.
+
+## Usage
+
+```jsx
+import Nav from './Nav';
+
+<Nav scroll0={true} className="my-nav" />
+```
+
+## Props
+
+The `Nav` component accepts the following props:
+
+- `scroll0` (boolean): Determines the scroll position of the page. When `true`, the navigation bar has a different appearance. Default: `false`.
+- `className` (string): Additional CSS class name(s) to be applied to the component. Default: `""`.
+
+## Example
+
+```jsx
+import Nav from './Nav';
+
+<Nav scroll0={true} className="my-nav" />
+```
+
+In this example, the `Nav` component is rendered with `scroll0` set to `true` and a custom CSS class name `my-nav`.
+
+The `Nav` component displays a navigation bar with menu options. Each menu option can be expanded to reveal submenus.
+
+## Styling
+
+The `Nav` component uses Tailwind CSS for styling. It applies different styles based on the `scroll0` prop.
+
+- When `scroll0` is `true`, the navigation bar has a white background and a larger font size.
+- When `scroll0` is `false`, the navigation bar has a transparent background and a smaller font size.
+
+When the page is scrolled to the top, the navigation bar has a white background with a larger font size and larger padding.
+When the page is scrolled down, the navigation bar has a transparent background with a smaller font size and smaller padding.
+You can customize the styling of the Nav component by modifying the Tailwind CSS classes applied to the navigation elements. The component uses responsive classes to adjust the layout based on screen size.
+
+## Structure
+
+The `Nav` component consists of the following structure:
+
+```jsx
+<nav className={`flex flex-row bg-white gap-4 lg:bg-transparent ${className}`}>
+  <ul className="flex flex-row items-center gap-2 overflow-x-auto">
+    {/* Menu items */}
+  </ul>
+</nav>
+```
+
+- The top-level `nav` element has the following properties:
+  - `className={'flex flex-row bg-white gap-4 lg:bg-transparent ${className}'}`: Applies Tailwind CSS classes for flex row layout, white background, gap between items, transparent background on large screens, and any additional custom class names provided through the `className` prop.
+- Inside the `nav` element, there's a `ul` element that contains the menu items:
+  - `className="flex flex-row items-center gap-2 overflow-x-auto"`: Applies Tailwind CSS classes for flex row layout, vertically centered items, gap between items, and horizontal overflow handling.
+
+The menu items are rendered dynamically based on the provided data in the `nav` array. Each menu item is represented by a `button` element with a label and an icon.
+
+## Functions
+
+The `Nav` component defines the following functions:
+
+- `handleNavMenu(id: number)`: Toggles the visibility of the submenu based on the selected menu item's `id`. If the submenu is already visible, it is hidden. If the submenu is hidden, it is displayed.
+- `handleCloseNav()`: Closes the currently open submenu by resetting the `currentNav` state to `null`.
+
+These functions are used to control the visibility of submenus when a menu item is clicked or when the close button is clicked.
+
+Please note that the above documentation assumes the presence of the @phosphor-icons/react package, the Inter and Sora fonts from the Google Fonts API, and the next/font/google and react packages. Make sure to import and use them accordingly in your project.
+
+This documentation provides an overview of the Nav component, its usage, props, and an example usage. Feel free to modify and enhance the documentation as needed for your project.
+
+## Related components
+
+- [Header](/docs/components-header--docs)

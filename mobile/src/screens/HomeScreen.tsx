@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView className="flex-1 items-center justify-center bg-blue-950 p-8">
       <Image source={logo} className='h-24 w-24'/>
 
-      <Text className="text-2xl font-bold">
+      <Text className="text-2xl font-bold text-white">
         Bem-vindo(a)!
       </Text>
 

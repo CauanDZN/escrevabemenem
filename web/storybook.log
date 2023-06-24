@@ -1,0 +1,28 @@
+[1/4] Resolving packages...
+warning @storybook/nextjs > node-polyfill-webpack-plugin > url > querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+error Couldn't find package "@typescript-eslint/types@5.59.9" required by "@typescript-eslint/scope-manager@5.59.9" on the "npm" registry.
+info Visit https://yarnpkg.com/en/docs/cli/add for documentation about this command.
+Error: Couldn't find package "@typescript-eslint/typescript-estree@5.59.9" required by "@typescript-eslint/utils@^5.45.0" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:36590:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+    at /usr/local/lib/node_modules/yarn/lib/cli.js:323:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error: Couldn't find package "@typescript-eslint/visitor-keys@5.59.9" required by "@typescript-eslint/scope-manager@5.59.9" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:36590:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+    at /usr/local/lib/node_modules/yarn/lib/cli.js:323:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error: Couldn't find package "@typescript-eslint/types@5.59.9" required by "@typescript-eslint/utils@^5.45.0" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:36590:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+    at /usr/local/lib/node_modules/yarn/lib/cli.js:323:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

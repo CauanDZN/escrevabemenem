@@ -1,0 +1,169 @@
+import { Canvas, Meta, Controls, Story } from '@storybook/blocks';
+import * as SvgStories from './Svg.stories.tsx';
+
+<Meta of={SvgStories} />
+
+# Svg Component
+
+The `Svg` component is a React component that is used to render SVG (Scalable Vector Graphics) images in a React application. It fetches an SVG file from a given source and processes the SVG data to render it as React elements.
+
+<Canvas of={SvgStories.Default} />
+
+## Props
+
+The `Svg` component accepts the following props:
+
+- `src` (required): The source URL of the SVG file to be fetched and rendered.
+- All other props: Any additional props provided will be passed down to the rendered SVG element.
+
+## Explanation of Svg Component Implementation
+
+The `Svg` component is a React component that renders an SVG (Scalable Vector Graphics) based on the provided source (`src`) URL. It fetches the SVG file, processes the SVG DOM (Document Object Model), and generates a React element representing the SVG.
+
+## Importing Required Dependencies and Utilities
+
+The code begins by importing necessary dependencies, utilities, and types for the component's implementation. These imports include:
+
+```tsx
+import { htmlToObject } from "../../utils/htmlToObject";
+import { treeRender } from "../../utils/treeRender";
+import { ReactElement, ReactElementGenerator } from "../../utils/ReactElementGenerator"
+import { useState, useEffect } from "react"
+import { CircleNotch } from "@phosphor-icons/react"
+```
+
+## Defining the Props Interface
+
+Next, the `SvgProps` interface is defined, which represents the expected props for the `Svg` component. The `src` prop is required, and any other additional props can be passed as key-value pairs.
+
+```tsx
+interface SvgProps {
+  src: any;
+  [key: string]: any;
+}
+```
+
+## Svg Component Function
+
+The `Svg` component is defined as a default function component that accepts the `src` prop and any other additional props. It returns a React element representing the SVG.
+
+```tsx
+export default function Svg({ src, ...props }: SvgProps) {
+  // Component logic goes here
+}
+```
+
+### State and Helper Functions
+
+Inside the `Svg` component function, the following state variables and helper functions are defined:
+
+```tsx
+const [svg, setSvg] = useState<ReactElementGenerator<any>>();
+const [svgXML, setSvgXML] = useState('');
+
+function deleteFillProp(childNode: ReactElement) {
+  delete childNode.props.fill
+  return childNode
+}
+
+async function fetchSVG() {
+  // Fetches the SVG file from the provided URL
+}
+
+function processSvgDOM(xml: string) {
+  // Processes the SVG DOM and generates a React element representing the SVG
+}
+```
+
+### useEffect Hook
+
+The `useEffect` hook is used to handle the component's side effects and lifecycle. It is triggered whenever the dependencies (`svgXML` and `props`) change.
+
+```tsx
+useEffect(() => {
+  if (svg) {
+    // If the svg state is already set, update it with new props if necessary
+  } else {
+    // Fetch the SVG file and process the SVG DOM
+  }
+}, [svgXML, props]);
+```
+
+### Fetching the SVG File
+
+The `fetchSVG` function is an asynchronous function that fetches the SVG file from the provided URL using the `fetch` API. It returns the text content of the SVG file.
+
+```tsx
+async function fetchSVG() {
+  try {
+    const response = await fetch(src);
+    const data = await response.text();
+    return data;
+  } catch (error) {
+    console.error('Error fetching SVG:', error);
+  }
+}
+```
+
+### Processing the SVG DOM
+
+The `processSvgDOM` function processes the SVG DOM obtained from the fetched SVG file. It uses the `htmlToObject` utility function to convert the SVG XML string into a DOM object. It then traverses the SVG DOM, extracts attributes, and generates a React element using the `ReactElementGenerator` utility class.
+
+```tsx
+function processSvgDOM(xml: string) {
+  const updatedSvg = new ReactElementGenerator('svg');
+  const svgNode = htmlToObject(xml);
+
+  // Extract SVG attributes and set them as props on the React element
+  for (let n = 0; n < svgNode.attributes.length; n++) {
+    const attribute = svgNode.attributes.item(n);
+
+    if
+
+ (attribute) {
+      const attributeName = attribute.name;
+      const attributeValue = attribute.value;
+
+      updatedSvg.appendProps({ [attributeName]: attributeValue });
+    }
+  }
+
+  updatedSvg.appendProps(props);
+
+  // Traverse the SVG DOM and generate React elements for each valid child element
+  treeRender(svgNode, updatedSvg);
+
+  // Remove 'fill' prop from child nodes if present
+  const updatedSvgChildren = updatedSvg.getChildren() as ReactElement<any>[];
+  const children = updatedSvgChildren.map(childNode => deleteFillProp(childNode));
+
+  updatedSvg.setChildren(children);
+  return updatedSvg;
+}
+```
+
+### Rendering the SVG Component
+
+After the `useEffect` hook, the component checks if the `svg` state is set. If it is, the component returns the built React element representing the SVG using the `build()` method of the `svg` object.
+
+```tsx
+if (svg) {
+  return svg.build();
+}
+```
+
+### Rendering Loading Indicator
+
+If the `svg` state is not set, it means the SVG file is being fetched or processed. In this case, the component displays a loading indicator using a `CircleNotch` icon from the `@phosphor-icons/react` package.
+
+```tsx
+return (
+  <div className="flex flex-row justify-center items-center">
+    <CircleNotch className="animate-spin text-zinc-300 dark:text-zinc-700" weight="regular" size={24} />
+  </div>
+)
+```
+
+## Conclusion
+
+The `Svg` component fetches an SVG file, processes its DOM, and generates a React element representing the SVG. It provides a loading indicator while the SVG is being fetched or processed. The component allows customization through additional props, which are applied to the SVG element.

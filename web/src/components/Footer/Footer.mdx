@@ -1,0 +1,60 @@
+import { Canvas, Meta, Controls, Story } from '@storybook/blocks';
+import * as FooterStories from './Footer.stories.tsx';
+
+<Meta of={FooterStories} />
+
+# Footer
+
+The `Footer` component is used to display a footer section at the top of the page.
+
+<Canvas of={FooterStories.Default} />
+
+<Controls />
+
+## Usage
+
+```jsx
+import Footer from './Footer';
+
+<Footer />
+```
+
+## Props
+
+The `Footer` component does not accept any props.
+
+## Styling
+
+The `Footer` component uses Tailwind CSS for styling.
+
+You can customize the styling of the `Footer` component by modifying the Tailwind CSS classes applied to the footer element. The component uses responsive classes to adjust the layout based on screen size.
+
+## Structure
+```jsx
+<footer className="footer bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+  <-- Footer Content -->
+
+
+  <div className="container mx-auto py-8 px-4">
+    <div className="flex flex-col md:flex-row items-center justify-between">
+      <div className={`${sora.className} flex flex-col md:flex-row gap-4 md:gap-8 items-center text-sm text-zinc-500`}>
+        <-- Logo and Copyright Info -->
+        <Image src={logo} alt="BookYourself Logo" className="w-16" />
+        <span>&copy; {new Date().getFullYear()} BookYourself.</span>
+      </div>
+      <nav className={`${inter.className} mt-4 md:mt-0`}>
+        <-- Navigation Links -->
+        <ul className="flex flex-wrap justify-center space-x-4">
+          {nav.map(({ title, path }, index) =>
+            <li key={index}>
+              <a href={path} className="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
+                {title}
+              </a>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+```
