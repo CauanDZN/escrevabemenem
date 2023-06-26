@@ -17,6 +17,34 @@ import Materials from '../screens/Materials';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const HomeStack = createStackNavigator();
+const MaterialsStack = createStackNavigator();
+const UserStack = createStackNavigator();
+
+const HomeStackScreen = () => (
+  <HomeStack.Navigator>
+    <HomeStack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+    {/* outras telas relacionadas à "Home" */}
+  </HomeStack.Navigator>
+);
+
+const MaterialsStackScreen = () => (
+  <MaterialsStack.Navigator>
+    <MaterialsStack.Screen name="Materials" component={Materials} options={{ headerShown: false }} />
+    {/* outras telas relacionadas a "Materials" */}
+    <MaterialsStack.Screen name="Models" component={Models} options={{ title: 'Exemplos de Redação' }} />
+    <MaterialsStack.Screen name="Repertoires" component={Repertoires} options={{ title: 'Repertórios' }} />
+    <MaterialsStack.Screen name="Connectives" component={Connectives} options={{ title: 'Conectivos' }} />
+    <MaterialsStack.Screen name="ConnectiveList" component={ConnectiveList} options={{ title: 'Lista de Conectivos' }} />
+  </MaterialsStack.Navigator>
+);
+
+const UserStackScreen = () => (
+  <UserStack.Navigator>
+    <UserStack.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
+    {/* outras telas relacionadas a "User" */}
+  </UserStack.Navigator>
+);
 
 const Navigation = () => {
   const { user } = useContext(AuthContext);
@@ -58,9 +86,9 @@ const Navigation = () => {
             },
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-          <Tab.Screen name="Materials" component={Materials} options={{ headerShown: false }} />
-          <Tab.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
+          <Tab.Screen name="Home" component={HomeStackScreen} options={{ headerShown: false }} />
+          <Tab.Screen name="Materials" component={MaterialsStackScreen} options={{ headerShown: false }} />
+          <Tab.Screen name="User" component={UserStackScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>

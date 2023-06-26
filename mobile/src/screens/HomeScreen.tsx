@@ -25,37 +25,10 @@ const HomeScreen = ({ navigation }) => {
       <Text className="text-2xl font-bold text-white">
         Bem-vindo(a)!
       </Text>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Models")} 
-        className="w-full mt-4 h-14 bg-blue-500 rounded-md items-center justify-center"
-      >
-        <Text className="text-white font-bold">
-          Modelos
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Repertoires")} 
-        className="w-full mt-4 h-14 bg-blue-500 rounded-md items-center justify-center"
-      >
-        <Text className="text-white font-bold">
-          Repertórios
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Connectives")} 
-        className="w-full mt-4 h-14 bg-blue-500 rounded-md items-center justify-center"
-      >
-        <Text className="text-white font-bold">
-          Conectivos
-        </Text>
-      </TouchableOpacity>
       
       <TouchableOpacity
         onPress={handleLogout} 
-        className="w-full mt-12 h-14 bg-red-500 rounded-md items-center justify-center"
+        className="w-full mt-12 h-14 bg-red-500 rounded-full items-center justify-center"
       >
         <Text className="text-white font-bold">
           Sair do Aplicativo

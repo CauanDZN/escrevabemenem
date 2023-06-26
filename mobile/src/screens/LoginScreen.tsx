@@ -31,12 +31,14 @@ const LoginScreen = ({ navigation }) => {
       {/* Campos de entrada do login */}
       <TextInput
         placeholder="Nome"
+        placeholderTextColor="gray" // Defina a cor do placeholder aqui
         value={username}
         onChangeText={setUsername}
         className="w-full h-14 border-white border-2 rounded-md text-white px-4 mt-4"
       />
       <TextInput
         placeholder="Senha"
+        placeholderTextColor="gray" // Defina a cor do placeholder aqui
         secureTextEntry
         value={password}
         onChangeText={setPassword}

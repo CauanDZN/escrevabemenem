@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Image, Button, SafeAreaView, Text, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -11,6 +11,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const Materials = () => {
+  const navigation = useNavigation();
   const { user, logout } = useContext(AuthContext);
 
   const handleLogout = async () => {
@@ -34,38 +35,29 @@ const Materials = () => {
       </Text>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate("Models")}
-        style={{ width: '100%', marginTop: 16, height: 40, backgroundColor: '#0E45A0', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+        onPress={() => navigation.navigate('Models')} 
+        className="w-full mt-4 h-14 bg-blue-500 rounded-full items-center justify-center"
       >
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+        <Text className="text-white font-bold">
           Modelos
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate("Repertoires")}
-        style={{ width: '100%', marginTop: 16, height: 40, backgroundColor: '#0E45A0', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+        onPress={() => navigation.navigate("Repertoires")} 
+        className="w-full mt-4 h-14 bg-blue-500 rounded-full items-center justify-center"
       >
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+        <Text className="text-white font-bold">
           Repertórios
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate("Connectives")}
-        style={{ width: '100%', marginTop: 16, height: 40, backgroundColor: '#0E45A0', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+        onPress={() => navigation.navigate("Connectives")} 
+        className="w-full mt-4 h-14 bg-blue-500 rounded-full items-center justify-center"
       >
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+        <Text className="text-white font-bold">
           Conectivos
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={handleLogout}
-        style={{ width: '100%', marginTop: 24, height: 40, backgroundColor: '#FF0000', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
-      >
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>
-          Sair do Aplicativo
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
