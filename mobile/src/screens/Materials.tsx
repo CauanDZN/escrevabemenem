@@ -30,8 +30,8 @@ const Materials = () => {
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#001B5A', padding: 8 }}>
       <Image source={logo} style={{ height: 100, width: 100 }} />
 
-      <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>
-        Bem-vindo(a)!
+      <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white' }}>
+        Materiais disponíveis:
       </Text>
 
       <TouchableOpacity

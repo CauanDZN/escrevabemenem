@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Image, Button, SafeAreaView, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { AuthContext } from '../auth/AuthContext';
 import logo from '../public/ebe.png';
+import { redacoes } from '../utils/themes';
 
 const Models = ({ navigation }) => {
   const { user, logout } = useContext(AuthContext);
@@ -18,24 +19,10 @@ const Models = ({ navigation }) => {
     }
   };
 
-  const redacoes = [
-    {
-      id: 1,
-      titulo: 'Desafios da educação no século XXI',
-      texto: 'A educação enfrenta diversos desafios no século XXI, sendo um deles...',
-    },
-    {
-      id: 2,
-      titulo: 'Impacto das redes sociais na sociedade',
-      texto: 'As redes sociais têm exercido um grande impacto na sociedade contemporânea...',
-    },
-    {
-      id: 3,
-      titulo: 'Desigualdade de gênero no mercado de trabalho',
-      texto: 'A desigualdade de gênero no mercado de trabalho é um problema persistente...',
-    },
-    // Adicione mais exemplos de redações aqui
-  ];
+  const handleRedacaoSelection = (redacao) => {
+    // Redirecionar para a tela de escrita de redação
+    navigation.navigate('WriteRedacao', { redacao });
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#001B5A', padding: 8 }}>
@@ -51,11 +38,12 @@ const Models = ({ navigation }) => {
               padding: 16,
               marginBottom: 16,
             }}
+            onPress={() => handleRedacaoSelection(redacao)}
           >
             <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
-              {redacao.titulo}
+              {redacao.title}
             </Text>
-            <Text>{redacao.texto}</Text>
+            <Text>{redacao.description}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>

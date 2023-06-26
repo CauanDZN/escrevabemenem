@@ -14,6 +14,7 @@ import Connectives from '../screens/Connectives';
 import ConnectiveList from '../screens/ConnectiveList';
 import UserScreen from '../screens/UserScreen';
 import Materials from '../screens/Materials';
+import WriteRedacao from '../screens/WriteRedacao';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -36,6 +37,7 @@ const MaterialsStackScreen = () => (
     <MaterialsStack.Screen name="Repertoires" component={Repertoires} options={{ title: 'Repertórios' }} />
     <MaterialsStack.Screen name="Connectives" component={Connectives} options={{ title: 'Conectivos' }} />
     <MaterialsStack.Screen name="ConnectiveList" component={ConnectiveList} options={{ title: 'Lista de Conectivos' }} />
+    <MaterialsStack.Screen name="WriteRedacao" component={WriteRedacao} options={{ headerShown: false }} />
   </MaterialsStack.Navigator>
 );
 

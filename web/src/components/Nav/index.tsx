@@ -43,42 +43,13 @@ export default function Nav({ scroll0, className }: NavProps) {
       name: "Sobre Nós",
       path: "",
       menu: {
-        "Conheça o BookYourself": [
-          { id: "sn1", title: "Conheça o BookYourself", path: "" },
+        "Conheça o Escreva Bem ENEM": [
+          { id: "sn1", title: "Conheça o Escreva Bem ENEM", path: "" },
           { id: "sn2", title: "Nossa equipe", path: "" },
-          { id: "sn3", title: "Ética e Compliance", path: "" },
-          { id: "sn4", title: "Entre em contato conosco", path: "" },
+          { id: "sn3", title: "Entre em contato conosco", path: "" },
         ],
       },
     },
-    { id: 1, name: "Pra você", path: "pravoce", menu: {
-      "Sua Experiência": [
-        { id: "pv1", title: "Quero ingressar ao BookYourself ->", path: "" },
-        { id: "pv2", title: "Aprenda a como utilizar a nossa aplicação", path: "" },
-        { id: "pv3", title: "Suporte e Documentação", path: "" },
-      ],
-      "Sua Instituição": [
-        { id: "pv4", title: "Quero cadastrar a minha instituição no BookYourself", path: "" },
-      ]
-    } },
-    { id: 2, name: "Soluções", path: "solucoes", menu: {
-      "Sua produtividade": [
-        { id: "s1", title: "Como o BookYourself muda a sua maneira de trabalhar", path: "" },
-        { id: "s2", title: "O que somos capazes de fazer", path: "" },
-        { id: "s3", title: "A importância do tempo", path: "" },
-        { id: "s4", title: "Nova geração de tecnologias", path: "" },
-      ]
-    } },
-    { id: 3, name: "Conteúdos", path: "conteudos", menu: {
-      "Siga-nos": [
-        { id: "c1", title: "Nosso LinkedIn", path: "" },
-        { id: "c1", title: "Nosso Instagram", path: "" },
-      ],
-      "Apostilas e Cursos": [
-        { id: "c2", title: "Em breve", path: "" },
-      ],
-
-    } },
   ] as NavItem[];
 
   function handleNavMenu(id: number) {

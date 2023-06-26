@@ -7,16 +7,17 @@ const LoginScreen = ({ navigation }) => {
   const { login, loading } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginType, setLoginType] = useState('aluno'); // 'aluno' ou 'professor'
 
   const handleLogin = async () => {
     const userData = {
       username: username,
       password: password,
+      loginType: loginType,
     };
 
     try {
       await login(userData);
-      console.log()
       // Navegar para a tela de HomeScreen após o login
       // (verifique se a rota está configurada corretamente)
     } catch (error) {
@@ -44,6 +45,25 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
         className="w-full h-14 border-white border-2 rounded-md text-white px-4 mt-4"
       />
+
+      {/* Seletor de tipo de login */}
+      
+      <TouchableOpacity
+        onPress={() => setLoginType('aluno')} 
+        className={`w-full mt-8 h-10 rounded-md items-center justify-center ${loginType === 'aluno' ? 'bg-blue-500' : 'bg-blue-200'}`}
+      >
+        <Text className={`${loginType === 'aluno' ? 'text-white' : 'text-blue-900'} font-bold`}>
+          Aluno
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => setLoginType('professor')} 
+        className={`w-full mt-2 h-10 rounded-md items-center justify-center ${loginType === 'professor' ? 'bg-blue-500' : 'bg-blue-200'}`}
+      >
+        <Text className={`${loginType === 'professor' ? 'text-white' : 'text-blue-900'} font-bold`}>
+          Professor
+        </Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         onPress={handleLogin} 

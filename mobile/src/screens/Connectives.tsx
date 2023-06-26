@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Image, Button, SafeAreaView, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { AuthContext } from '../auth/AuthContext';
 import logo from '../public/ebe.png';
+import { connectives } from '../utils/connectives';
 
 const Connectives = ({ navigation }) => {
   const { user, logout } = useContext(AuthContext);
@@ -18,28 +19,19 @@ const Connectives = ({ navigation }) => {
     }
   };
 
-  const connectives = [
-    {
-      id: 1,
-      name: 'Além disso',
-    },
-    {
-      id: 2,
-      name: 'Por outro lado',
-    },
-    {
-      id: 3,
-      name: 'De acordo com',
-    },
-    // Adicione mais exemplos de conectivos aqui
-  ];
+  const introducaoConnectives = connectives.slice(0, 12);
+  const desenvolvimento1Connectives = connectives.slice(12, 23);
+  const desenvolvimento2Connectives = connectives.slice(23, 34);
+  const conclusaoConnectives = connectives.slice(34, 49);
+  const enfaseConnectives = connectives.slice(68, 74);
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#001B5A', padding: 8 }}>
       <Image source={logo} style={{ height: 100, width: 100 }} />
 
       <ScrollView style={{ flex: 1, marginTop: 24 }}>
-        {connectives.map((connective) => (
+        <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 20 }}>Introdução</Text>
+        {introducaoConnectives.map((connective) => (
           <TouchableOpacity
             key={connective.id}
             style={{
@@ -49,9 +41,67 @@ const Connectives = ({ navigation }) => {
               marginBottom: 16,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-              {connective.name}
-            </Text>
+            <Text style={{ fontSize: 16 }}>{connective.name}</Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={{ marginTop: 30, color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Desenvolvimento 1</Text>
+        {desenvolvimento1Connectives.map((connective) => (
+          <TouchableOpacity
+            key={connective.id}
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 8,
+              padding: 16,
+              marginBottom: 16,
+            }}
+          >
+            <Text style={{ fontSize: 16 }}>{connective.name}</Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={{ marginTop: 30, color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Desenvolvimento 2</Text>
+        {desenvolvimento2Connectives.map((connective) => (
+          <TouchableOpacity
+            key={connective.id}
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 8,
+              padding: 16,
+              marginBottom: 16,
+            }}
+          >
+            <Text style={{ fontSize: 16 }}>{connective.name}</Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={{ marginTop: 30, color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Conclusão</Text>
+        {conclusaoConnectives.map((connective) => (
+          <TouchableOpacity
+            key={connective.id}
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 8,
+              padding: 16,
+              marginBottom: 16,
+            }}
+          >
+            <Text style={{ fontSize: 16 }}>{connective.name}</Text>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={{ marginTop: 30, color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Para afirmar, dar ênfase</Text>
+        {enfaseConnectives.map((connective) => (
+          <TouchableOpacity
+            key={connective.id}
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 8,
+              padding: 16,
+              marginBottom: 16,
+            }}
+          >
+            <Text style={{ fontSize: 16 }}>{connective.name}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
