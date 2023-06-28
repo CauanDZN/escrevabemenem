@@ -35,6 +35,8 @@ const WriteRedacao = ({ navigation, route }) => {
       </Text>
       <Text style={{ color: 'white' }}>{route.params.redacao.description}</Text>
 
+      <Text style={{ color: 'white', marginTop: 24 }}>{route.params.redacao.motivator}</Text>
+
       <TextInput
         style={{ backgroundColor: '#fff', borderRadius: 8, padding: 16, marginTop: 24, marginBottom: 16, width: '100%' }}
         multiline

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Image, Button, SafeAreaView, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { AuthContext } from '../auth/AuthContext';
 import logo from '../public/ebe.png';
+import { citations } from '../utils/citations';
 
 const Repertoires = ({ navigation }) => {
   const { user, logout } = useContext(AuthContext);
@@ -18,30 +19,14 @@ const Repertoires = ({ navigation }) => {
     }
   };
 
-  const repertoires = [
-    {
-      id: 1,
-      name: 'Literatura brasileira',
-    },
-    {
-      id: 2,
-      name: 'História do Brasil',
-    },
-    {
-      id: 3,
-      name: 'Movimentos sociais',
-    },
-    // Adicione mais exemplos de repertórios aqui
-  ];
-
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#001B5A', padding: 8 }}>
       <Image source={logo} style={{ height: 100, width: 100 }} />
 
       <ScrollView style={{ flex: 1, marginTop: 24 }}>
-        {repertoires.map((repertoire) => (
+        {citations.map((citation) => (
           <TouchableOpacity
-            key={repertoire.id}
+            key={citation.id}
             style={{
               backgroundColor: '#fff',
               borderRadius: 8,
@@ -49,9 +34,10 @@ const Repertoires = ({ navigation }) => {
               marginBottom: 16,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-              {repertoire.name}
+            <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
+              {citation.text}
             </Text>
+            <Text>- {citation.author}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
